@@ -1,0 +1,67 @@
+:root {
+  --text-color: #FFA9BA;
+  --background-color: #000000;
+}
+
+html {
+  background-color: var(--background-color);
+  min-height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  color: var(--text-color);
+}
+
+.fib {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count {
+  position: relative;
+  z-index: 20;
+  font-size: 100px;
+  cursor: pointer;
+  padding: 100px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--text-color);
+  display: inline-block;
+  outline: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.lines {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border: 5px solid var(--text-color);
+}
+
+.line {
+  background-color: var(--text-color);
+  position: absolute;
+}
+.line--horizontal {
+  height: 1px;
+  left: 0;
+  right: 0;
+}
+.line--vertical {
+  width: 1px;
+  top: 0;
+  bottom: 0;
+}
