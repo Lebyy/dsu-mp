@@ -51,10 +51,10 @@ const isAnOperator = (s: string) =>
   preference[s as keyof typeof preference] !== undefined;
 const isAParen = (s: string) => preference[s as keyof typeof preference] === 3;
 function infixToPostfix(expression: string) {
-  const infixExp = [...expression.split(""), ")"];
+  const infixExp = ["(", ...expression.split(""), ")"];
   const postfixExp: (string | undefined)[] = [];
   
-  const stack = ["("];
+  const stack = [];
 
   const table: {
     exp: string[];
@@ -66,14 +66,9 @@ function infixToPostfix(expression: string) {
     result: [],
   };
 
-  table.exp.push("(");
-  table.stack.push(stack.join(" "));
-  table.result.push(postfixExp.join(""));
-
   for (const char of infixExp) {
     if (char === "(") {
       stack.push(char);
-      continue;
     } else if (!isAnOperator(char)) {
       postfixExp.push(char);
     } else if (char === ")") {
@@ -133,10 +128,10 @@ function infixToPostfix(expression: string) {
   );
 };
 function infixToPrefix(expression: string) {
-  const InfixExp = [...expression.split("").reverse(), "("];
+  const InfixExp = [")", ...expression.split("").reverse(), "("];
   const PrefixExp: (string | undefined)[] = [];
 
-  const stack = [")"];
+  const stack = [];
 
   const table: {
     exp: string[];
@@ -148,13 +143,9 @@ function infixToPrefix(expression: string) {
     result: [],
   };
 
-  table.exp.push(")");
-  table.stack.push(stack.join(" "));
-  table.result.push(PrefixExp.join(""));
   for (const char of InfixExp) {
     if (char === ")") {
       stack.push(char);
-      continue;
     } else if (!isAnOperator(char)) {
       PrefixExp.push(char);
     } else if (char === "(") {
